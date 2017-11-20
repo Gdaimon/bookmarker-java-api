@@ -10,6 +10,7 @@ import zone.webtraining.bookmarker.services.BookmarksService;
 import java.util.Collection;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/bookmarks")
 public class BookmarksController {
 
