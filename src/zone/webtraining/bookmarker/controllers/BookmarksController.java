@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import zone.webtraining.bookmarker.models.Bookmark;
@@ -22,6 +23,13 @@ public class BookmarksController {
         Collection<Bookmark> bookmarkList = this.bookmarksService.getAll();
 
         return new ResponseEntity<Collection<Bookmark>>(bookmarkList, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Bookmark> getSingle(@PathVariable int id) {
+        Bookmark bookmark = this.bookmarksService.get(id);
+
+        return new ResponseEntity<Bookmark>(bookmark, HttpStatus.OK);
     }
 
     @PostMapping

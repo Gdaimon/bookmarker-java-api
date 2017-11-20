@@ -9,21 +9,31 @@ import java.util.Collections;
 import java.util.List;
 
 public class MySQLBookmarksService implements BookmarksService {
-    public Collection<Bookmark> getAll() {
-        List<Bookmark> list = new ArrayList<Bookmark>();
 
-        list.add(this.get(1));
-        list.add(this.get(2));
-        list.add(this.get(3));
-        return list;
+    private List<Bookmark> list = new ArrayList<Bookmark>();
+
+    public MySQLBookmarksService() {
+        super();
+
+        for (int i = 0; i < 100; i++) {
+            this.list.add(this._createBookmarkInstance(i));
+        }
     }
 
-    public Bookmark get(int id) {
+    private Bookmark _createBookmarkInstance(int id) {
         return new Bookmark(id, 1,
                 "Webtraining.Zone",
                 "Plataforma para ayudar",
                 "https://webtraining.zone/",
                 new DateTime(),
                 new DateTime());
+    }
+
+    public Collection<Bookmark> getAll() {
+        return this.list;
+    }
+
+    public Bookmark get(int id) {
+        return this.list.get(id);
     }
 }
