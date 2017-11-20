@@ -8,11 +8,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class MySQLBookmarksService implements BookmarksService {
+public class DummyBookmarksService implements BookmarksService {
 
     private List<Bookmark> list = new ArrayList<Bookmark>();
 
-    public MySQLBookmarksService() {
+    public DummyBookmarksService() {
         super();
 
         for (int i = 0; i < 100; i++) {
@@ -35,5 +35,21 @@ public class MySQLBookmarksService implements BookmarksService {
 
     public Bookmark get(int id) {
         return this.list.get(id);
+    }
+
+    public Bookmark create(Bookmark bookmark) {
+        this.list.add(bookmark);
+        return bookmark;
+    }
+
+    public Bookmark update(Bookmark bookmark) {
+        this.list.set(bookmark.getId(), bookmark);
+
+        return bookmark;
+    }
+
+    public Bookmark delete(Bookmark bookmark) {
+        this.list.remove(bookmark.getId());
+        return bookmark;
     }
 }
