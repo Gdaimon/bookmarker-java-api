@@ -7,6 +7,7 @@
           <element id="module-output" name="bookmarker-api" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: joda-time:joda-time:2.9.9" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.1.RELEASE" />
@@ -15,6 +16,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.0.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.1.RELEASE" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-joda:2.9.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
