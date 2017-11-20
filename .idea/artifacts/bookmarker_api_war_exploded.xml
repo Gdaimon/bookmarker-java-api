@@ -8,6 +8,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.9.9" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.1.RELEASE" />
