@@ -4,7 +4,6 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
@@ -13,12 +12,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import zone.webtraining.bookmarker.models.Bookmark;
 
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:application.properties"})
 @ComponentScans(value = {
-        @ComponentScan("zone.webtraining.bookmarker.models"),
+        @ComponentScan("zone.webtraining.bookmarker.daos"),
         @ComponentScan("zone.webtraining.bookmarker.services")
 })
 public class HibernateConfig {
@@ -57,29 +57,20 @@ public class HibernateConfig {
     }
 
     @Bean
-    public LocalSessionFactoryBean getSessionFactory() {
-        System.out.println("LOG >> HibernateConfig.getSessionFactory()");
+    public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSource());
+
+        sessionFactory.setAnnotatedClasses(Bookmark.class);
         sessionFactory.setPackagesToScan(new String[]{"zone.webtraining.bookmarker.models"});
         sessionFactory.setHibernateProperties(getHibernateProperties());
         return sessionFactory;
     }
 
-//    public SessionFactory getSessionFactory() {
-//        return sessionFactoryBean().getObject();
-//    }
-
-    /**
-     * Initialize Transaction Manager
-     *
-     * @param sessionFactory
-     * @return HibernateTransactionManager
-     */
     @Bean
-    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(sessionFactory);
-        return txManager;
+    public HibernateTransactionManager getTransactionManager() {
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory().getObject());
+        return transactionManager;
     }
 }
