@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import zone.webtraining.bookmarker.daos.BookmarksDao;
-import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.dao.BookmarksDao;
+import zone.webtraining.bookmarker.entities.Bookmark;
 
 import java.util.Collection;
 

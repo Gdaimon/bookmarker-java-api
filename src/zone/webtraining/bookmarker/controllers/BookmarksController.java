@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.entities.Bookmark;
 import zone.webtraining.bookmarker.models.BookmarksResponse;
 import zone.webtraining.bookmarker.services.BookmarksService;
 
@@ -21,8 +21,6 @@ public class BookmarksController {
 
     @GetMapping
     public ResponseEntity<BookmarksResponse> getAll() {
-        System.out.println("LOG >> BookmarksController.getAll()");
-
         Collection<Bookmark> bookmarkList = this.bookmarksService.getAll();
         BookmarksResponse bookmarksResponse = new BookmarksResponse(bookmarkList);
 

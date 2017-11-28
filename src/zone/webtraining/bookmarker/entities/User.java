@@ -1,4 +1,4 @@
-package zone.webtraining.bookmarker.models;
+package zone.webtraining.bookmarker.entities;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;

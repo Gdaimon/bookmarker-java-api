@@ -1,6 +1,6 @@
-package zone.webtraining.bookmarker.daos;
+package zone.webtraining.bookmarker.dao;
 
-import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.entities.Bookmark;
 
 import java.io.Serializable;
 import java.util.Collection;

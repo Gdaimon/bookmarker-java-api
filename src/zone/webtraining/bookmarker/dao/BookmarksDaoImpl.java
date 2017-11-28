@@ -1,10 +1,10 @@
-package zone.webtraining.bookmarker.daos;
+package zone.webtraining.bookmarker.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.entities.Bookmark;
 
 import javax.persistence.TypedQuery;
 import java.io.Serializable;

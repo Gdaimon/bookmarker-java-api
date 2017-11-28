@@ -15,7 +15,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import zone.webtraining.bookmarker.controllers.BookmarksController;
+import zone.webtraining.bookmarker.controllers.UsersController;
 import zone.webtraining.bookmarker.services.BookmarksService;
+import zone.webtraining.bookmarker.services.UsersService;
 
 import java.util.List;
 
@@ -25,6 +27,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public BookmarksController bookmarksController(BookmarksService bookmarksService) {
         return new BookmarksController();
+    }
+
+    @Bean
+    UsersController usersController(UsersService usersService) {
+        return new UsersController();
     }
 
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

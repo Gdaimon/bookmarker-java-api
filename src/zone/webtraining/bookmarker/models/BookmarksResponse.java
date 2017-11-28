@@ -1,9 +1,10 @@
 package zone.webtraining.bookmarker.models;
 
 
+import zone.webtraining.bookmarker.entities.Bookmark;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class BookmarksResponse {
     private Collection<Bookmark> bookmarks;

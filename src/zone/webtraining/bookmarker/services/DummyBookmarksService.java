@@ -1,8 +1,8 @@
 package zone.webtraining.bookmarker.services;
 
 import org.joda.time.DateTime;
-import zone.webtraining.bookmarker.daos.BookmarksDao;
-import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.dao.BookmarksDao;
+import zone.webtraining.bookmarker.entities.Bookmark;
 
 import java.util.ArrayList;
 import java.util.Collection;
