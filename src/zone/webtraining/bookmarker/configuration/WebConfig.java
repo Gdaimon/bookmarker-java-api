@@ -1,7 +1,6 @@
 package zone.webtraining.bookmarker.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 import org.springframework.context.annotation.Bean;

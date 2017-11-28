@@ -3,7 +3,6 @@ package zone.webtraining.bookmarker.entities;
 import javax.persistence.*;
 
 import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 import java.io.Serializable;
@@ -44,14 +43,14 @@ public class Bookmark implements Serializable {
     public Bookmark() {
     }
 
-    public Bookmark(Long id, String title, String description, String url, DateTime created, DateTime modified) {
+    public Bookmark(Long id, String title, String description, String url, LocalDateTime created, LocalDateTime modified) {
         this.id = id;
 //        this.userId = userId;
         this.title = title;
         this.description = description;
         this.url = url;
-//        this.created = created;
-//        this.modified = modified;
+        this.created = created;
+        this.modified = modified;
     }
 
     public Long getId() {

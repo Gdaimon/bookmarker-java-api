@@ -1,6 +1,7 @@
 package zone.webtraining.bookmarker.services;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 import zone.webtraining.bookmarker.dao.BookmarksDao;
 import zone.webtraining.bookmarker.entities.Bookmark;
 
@@ -25,8 +26,8 @@ public class DummyBookmarksService implements BookmarksService {
                 "Base22e #" + id,
                 "Plataforma para ayudar #" + id,
                 "https://base22.com/",
-                new DateTime(),
-                new DateTime());
+                new LocalDateTime(),
+                new LocalDateTime());
     }
 
     public Collection<Bookmark> getAll() {

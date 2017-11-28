@@ -1,10 +1,12 @@
 package zone.webtraining.bookmarker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,8 +23,9 @@ public class User implements Serializable {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDateTime modified;
 
-//    @OneToMany(mappedBy = "user")
-//    private Set<Bookmark> bookmarks;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Bookmark> bookmarks;
 
 
     public User() {
@@ -67,11 +70,11 @@ public class User implements Serializable {
         this.modified = modified;
     }
 
-//    public Set<Bookmark> getBookmarks() {
-//        return bookmarks;
-//    }
-//
-//    public void setBookmarks(Set<Bookmark> bookmarks) {
-//        this.bookmarks = bookmarks;
-//    }
+    public Set<Bookmark> getBookmarks() {
+        return bookmarks;
+    }
+
+    public void setBookmarks(Set<Bookmark> bookmarks) {
+        this.bookmarks = bookmarks;
+    }
 }
