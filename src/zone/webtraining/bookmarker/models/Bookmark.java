@@ -2,19 +2,40 @@ package zone.webtraining.bookmarker.models;
 
 import org.joda.time.DateTime;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Bookmark {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "user_id")
     private int userId;
+
+    @Column
     private String title;
+
+    @Column
     private String description;
+
+    @Column
     private String url;
+
+    @Column
     private DateTime created;
+
+    @Column
     private DateTime modified;
+
+    //private User user;
 
     public Bookmark() {
     }
 
-    public Bookmark(int id, int userId, String title, String description, String url, DateTime created, DateTime modified) {
+    public Bookmark(Long id, int userId, String title, String description, String url, DateTime created, DateTime modified) {
         this.id = id;
         this.userId = userId;
         this.title = title;
@@ -24,11 +45,11 @@ public class Bookmark {
         this.modified = modified;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -79,4 +100,12 @@ public class Bookmark {
     public void setModified(DateTime modified) {
         this.modified = modified;
     }
+/*
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }*/
 }
