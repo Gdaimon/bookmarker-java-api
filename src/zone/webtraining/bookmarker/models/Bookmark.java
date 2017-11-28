@@ -33,10 +33,10 @@ public class Bookmark implements Serializable {
 //    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
 //    private DateTime modified;
 
-//    @ManyToOne
-//    @PrimaryKeyJoinColumn(name = "user_id")
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne
+    @PrimaryKeyJoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public Bookmark() {
     }
@@ -107,11 +107,11 @@ public class Bookmark implements Serializable {
 //        this.modified = modified;
 //    }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

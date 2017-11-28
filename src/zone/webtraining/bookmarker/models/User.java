@@ -17,11 +17,11 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    private DateTime created;
-
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    private DateTime modified;
+//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+//    private DateTime created;
+//
+//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+//    private DateTime modified;
 
 //    @OneToMany(mappedBy = "user")
 //    private Set<Bookmark> bookmarks;
@@ -34,8 +34,8 @@ public class User implements Serializable {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.created = created;
-        this.modified = modified;
+//        this.created = created;
+//        this.modified = modified;
     }
 
     public Long getId() {
@@ -62,21 +62,21 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public DateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(DateTime created) {
-        this.created = created;
-    }
-
-    public DateTime getModified() {
-        return modified;
-    }
-
-    public void setModified(DateTime modified) {
-        this.modified = modified;
-    }
+//    public DateTime getCreated() {
+//        return created;
+//    }
+//
+//    public void setCreated(DateTime created) {
+//        this.created = created;
+//    }
+//
+//    public DateTime getModified() {
+//        return modified;
+//    }
+//
+//    public void setModified(DateTime modified) {
+//        this.modified = modified;
+//    }
 
 //    public Set<Bookmark> getBookmarks() {
 //        return bookmarks;
