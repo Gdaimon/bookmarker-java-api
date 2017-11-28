@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.models.BookmarksResponse;
 import zone.webtraining.bookmarker.services.BookmarksService;
 
 import java.util.Collection;
@@ -17,15 +18,18 @@ public class BookmarksController {
     private BookmarksService bookmarksService;
 
     @GetMapping
-    public ResponseEntity<Collection<Bookmark>> getAll() {
-        Collection<Bookmark> bookmarkList = this.bookmarksService.getAll();
+    public ResponseEntity<BookmarksResponse> getAll() {
+        System.out.println("LOG >> BookmarksController.getAll()");
 
-        return new ResponseEntity<Collection<Bookmark>>(bookmarkList, HttpStatus.OK);
+        Collection<Bookmark> bookmarkList = this.bookmarksService.getAll();
+        BookmarksResponse bookmarksResponse = new BookmarksResponse(bookmarkList);
+
+        return new ResponseEntity<BookmarksResponse>(bookmarksResponse, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Bookmark> getSingle(@PathVariable int id) {
-        Bookmark bookmark = this.bookmarksService.get(id);
+        Bookmark bookmark = this.bookmarksService.get((long) id);
 
         return new ResponseEntity<Bookmark>(bookmark, HttpStatus.OK);
     }
@@ -40,7 +44,8 @@ public class BookmarksController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Bookmark> delete(@PathVariable int id) {
-        Bookmark bookmarkDeleted = this.bookmarksService.delete(this.bookmarksService.get(id));
+        Long idToDelete = (long) id;
+        Bookmark bookmarkDeleted = this.bookmarksService.delete(this.bookmarksService.get(idToDelete));
 
         return new ResponseEntity<Bookmark>(bookmarkDeleted, HttpStatus.OK);
     }
@@ -48,6 +53,9 @@ public class BookmarksController {
     @PutMapping(path = "/{id}", consumes = "application/json")
     public ResponseEntity<Bookmark> update(@PathVariable int id, @RequestBody Bookmark bookmark) {
         Bookmark bookmarkUpdated = this.bookmarksService.update(bookmark);
+
+        System.out.println("Update is invoked");
+        System.out.println("ID:" + bookmark.getId());
 
         return new ResponseEntity<Bookmark>(bookmarkUpdated, HttpStatus.OK);
     }

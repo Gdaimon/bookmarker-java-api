@@ -1,6 +1,7 @@
 package zone.webtraining.bookmarker.services;
 
 import org.joda.time.DateTime;
+import zone.webtraining.bookmarker.daos.BookmarksDao;
 import zone.webtraining.bookmarker.models.Bookmark;
 
 import java.util.ArrayList;
@@ -15,15 +16,15 @@ public class DummyBookmarksService implements BookmarksService {
         super();
 
         for (int i = 0; i < 100; i++) {
-            this.list.add(this._createBookmarkInstance(i));
+            this.list.add(this._createBookmarkInstance(Long.valueOf(i)));
         }
     }
 
-    private Bookmark _createBookmarkInstance(int id) {
+    private Bookmark _createBookmarkInstance(Long id) {
         return new Bookmark(id, 1,
-                "Webtraining.Zone",
-                "Plataforma para ayudar",
-                "https://webtraining.zone/",
+                "Base22e #" + id,
+                "Plataforma para ayudar #" + id,
+                "https://base22.com/",
                 new DateTime(),
                 new DateTime());
     }
@@ -32,8 +33,8 @@ public class DummyBookmarksService implements BookmarksService {
         return this.list;
     }
 
-    public Bookmark get(int id) {
-        return this.list.get(id);
+    public Bookmark get(Long id) {
+        return this.list.get(id.intValue());
     }
 
     public Bookmark create(Bookmark bookmark) {
@@ -42,7 +43,7 @@ public class DummyBookmarksService implements BookmarksService {
     }
 
     public Bookmark update(Bookmark bookmark) {
-        this.list.set(bookmark.getId(), bookmark);
+        this.list.set(bookmark.getId().intValue(), bookmark);
 
         return bookmark;
     }
@@ -51,4 +52,10 @@ public class DummyBookmarksService implements BookmarksService {
         this.list.remove(bookmark.getId());
         return bookmark;
     }
+
+    public void setBookmarksDao(BookmarksDao bookmarksDao) {
+
+    }
+
+
 }
