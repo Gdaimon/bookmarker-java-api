@@ -16,12 +16,12 @@ public class DummyBookmarksService implements BookmarksService {
         super();
 
         for (int i = 0; i < 100; i++) {
-            this.list.add(this._createBookmarkInstance(Long.valueOf(i)));
+            this.list.add(this._createBookmarkInstance((long) i));
         }
     }
 
     private Bookmark _createBookmarkInstance(Long id) {
-        return new Bookmark(id, 1,
+        return new Bookmark(id,
                 "Base22e #" + id,
                 "Plataforma para ayudar #" + id,
                 "https://base22.com/",
