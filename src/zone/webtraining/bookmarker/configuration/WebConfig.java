@@ -31,8 +31,8 @@ public class WebConfig implements WebMvcConfigurer {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JodaModule());
 
-        objectMapper.setDateFormat(new StdDateFormat());
-
+        // objectMapper.setDateFormat(new StdDateFormat());
+        objectMapper.setDateFormat(new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
         converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
     }
 

@@ -1,7 +1,10 @@
 package zone.webtraining.bookmarker.models;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import java.io.Serializable;
 
@@ -25,13 +28,13 @@ public class Bookmark implements Serializable {
     @Column
     private String url;
 
-//    @Column
-//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-//    private DateTime created;
-//
-//    @Column
-//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-//    private DateTime modified;
+    @Column(name = "created", updatable = false)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime created;
+
+    @Column
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime modified;
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "user_id")
@@ -91,21 +94,21 @@ public class Bookmark implements Serializable {
         this.url = url;
     }
 
-//    public DateTime getCreated() {
-//        return created;
-//    }
-//
-//    public void setCreated(DateTime created) {
-//        this.created = created;
-//    }
-//
-//    public DateTime getModified() {
-//        return modified;
-//    }
-//
-//    public void setModified(DateTime modified) {
-//        this.modified = modified;
-//    }
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public LocalDateTime getModified() {
+        return modified;
+    }
+
+    public void setModified(LocalDateTime modified) {
+        this.modified = modified;
+    }
 
     public User getUser() {
         return user;

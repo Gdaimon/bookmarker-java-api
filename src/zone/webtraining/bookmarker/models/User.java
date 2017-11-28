@@ -1,12 +1,10 @@
 package zone.webtraining.bookmarker.models;
 
 import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -15,13 +13,13 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String email;
-    private String password;
 
-//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-//    private DateTime created;
-//
-//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-//    private DateTime modified;
+    @Column(name = "created", updatable = false)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime created;
+
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime modified;
 
 //    @OneToMany(mappedBy = "user")
 //    private Set<Bookmark> bookmarks;
@@ -30,12 +28,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String email, String password, DateTime created, DateTime modified) {
+    public User(Long id, String email, String password, LocalDateTime created, LocalDateTime modified) {
         this.id = id;
         this.email = email;
-        this.password = password;
-//        this.created = created;
-//        this.modified = modified;
+        this.created = created;
+        this.modified = modified;
     }
 
     public Long getId() {
@@ -54,29 +51,21 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public LocalDateTime getCreated() {
+        return created;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
-//    public DateTime getCreated() {
-//        return created;
-//    }
-//
-//    public void setCreated(DateTime created) {
-//        this.created = created;
-//    }
-//
-//    public DateTime getModified() {
-//        return modified;
-//    }
-//
-//    public void setModified(DateTime modified) {
-//        this.modified = modified;
-//    }
+    public LocalDateTime getModified() {
+        return modified;
+    }
+
+    public void setModified(LocalDateTime modified) {
+        this.modified = modified;
+    }
 
 //    public Set<Bookmark> getBookmarks() {
 //        return bookmarks;
