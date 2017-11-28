@@ -24,8 +24,9 @@ public class MySQLBookmarksService implements BookmarksService {
         return bookmarksDao.getAll();
     }
 
+    @Transactional(readOnly = true)
     public Bookmark get(Long id) {
-        return null;
+        return bookmarksDao.get(id);
     }
 
     @Transactional

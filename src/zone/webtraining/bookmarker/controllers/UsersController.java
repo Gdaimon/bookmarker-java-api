@@ -25,8 +25,6 @@ public class UsersController {
     public ResponseEntity<UsersResponse> getAll() {
         Collection<User> usersList = this.usersService.getAll();
         UsersResponse usersResponse = new UsersResponse(usersList);
-
-
         return new ResponseEntity<UsersResponse>(usersResponse, HttpStatus.OK);
     }
 }

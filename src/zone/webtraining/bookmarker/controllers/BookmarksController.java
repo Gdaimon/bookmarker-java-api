@@ -28,8 +28,8 @@ public class BookmarksController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Bookmark> getSingle(@PathVariable int id) {
-        Bookmark bookmark = this.bookmarksService.get((long) id);
+    public ResponseEntity<Bookmark> getSingle(@PathVariable Long id) {
+        Bookmark bookmark = this.bookmarksService.get(id);
 
         return new ResponseEntity<Bookmark>(bookmark, HttpStatus.OK);
     }
