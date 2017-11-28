@@ -12,13 +12,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import zone.webtraining.bookmarker.models.Bookmark;
+import zone.webtraining.bookmarker.entities.Bookmark;
 
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:application.properties"})
 @ComponentScans(value = {
-        @ComponentScan("zone.webtraining.bookmarker.daos"),
+        @ComponentScan("zone.webtraining.bookmarker.dao"),
         @ComponentScan("zone.webtraining.bookmarker.services")
 })
 public class HibernateConfig {
@@ -62,7 +62,7 @@ public class HibernateConfig {
         sessionFactory.setDataSource(getDataSource());
 
         sessionFactory.setAnnotatedClasses(Bookmark.class);
-        sessionFactory.setPackagesToScan(new String[]{"zone.webtraining.bookmarker.models"});
+        sessionFactory.setPackagesToScan(new String[]{"zone.webtraining.bookmarker.entities"});
         sessionFactory.setHibernateProperties(getHibernateProperties());
         return sessionFactory;
     }
